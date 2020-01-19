@@ -1,0 +1,27 @@
+{
+  "name": "libur-bi",
+  "version": "1.0.0",
+  "description": "hari libur Indonesia sesuai kalender Bank Indonesia",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "next",
+    "build": "next build",
+    "start": "next start"
+  },
+  "author": "Eko Prasetyo",
+  "license": "ISC",
+  "dependencies": {
+    "@types/puppeteer": "^2.0.0",
+    "moment": "^2.24.0",
+    "next": "^9.2.0",
+    "puppeteer": "^2.0.0",
+    "react": "^16.12.0",
+    "react-dom": "^16.12.0"
+  },
+  "devDependencies": {
+    "@types/node": "^13.1.7",
+    "@types/react": "^16.9.17",
+    "typescript": "^3.7.4"
+  }
+}
