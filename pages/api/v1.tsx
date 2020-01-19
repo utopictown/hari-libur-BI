@@ -1,5 +1,6 @@
 import { NextApiRequest, NextApiResponse } from 'next'
-import puppeteer, { ElementHandle } from 'puppeteer'
+import puppeteer, { ElementHandle } from 'puppeteer-core'
+import chromium from 'chrome-aws-lambda'
 import moment from 'moment';
 
 const listMonths = [
@@ -49,7 +50,12 @@ const load = async () => {
   let data = new Array();
   let footNote = new Array();
   const currentYear = new Date().getFullYear();
-  const browser = await puppeteer.launch({timeout: 0});
+  const browser = await puppeteer.launch({
+    args: chromium.args,
+    defaultViewport: chromium.defaultViewport,
+    executablePath: await chromium.executablePath,
+    headless: chromium.headless,
+  });
   const page = await browser.newPage();
   await page.goto(`https://www.bi.go.id/id/ruang-media/agenda/kalender-hari-libur/Contents/Kalender-Libur-${currentYear}.aspx`);
   const oddRowHandles = await page.$$('.ms-rteTableOddRow-6');

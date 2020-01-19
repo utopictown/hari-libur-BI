@@ -12,14 +12,15 @@
   "author": "Eko Prasetyo",
   "license": "ISC",
   "dependencies": {
-    "@types/puppeteer": "^2.0.0",
+    "chrome-aws-lambda": "^2.0.2",
     "moment": "^2.24.0",
     "next": "^9.2.0",
-    "puppeteer": "^2.0.0",
+    "puppeteer-core": "^2.0.0",
     "react": "^16.12.0",
     "react-dom": "^16.12.0"
   },
   "devDependencies": {
+    "@types/puppeteer-core": "^2.0.0",
     "@types/node": "^13.1.7",
     "@types/react": "^16.9.17",
     "typescript": "^3.7.4"
