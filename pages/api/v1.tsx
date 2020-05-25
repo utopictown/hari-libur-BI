@@ -81,9 +81,9 @@ const load = async () => {
         const year = parseInt(splittedDate[2].replace('​', '')); // purge weird zero width space character
 
         return {
-          dateString: moment(`${year}-${month+1}-${date}`).locale('id').format('DD MMMM YYYY'),
-          date: moment(`${year}-${month+1}-${date}`),
-          day: moment(`${year}-${month+1}-${date}`).locale('id').format('dddd'),
+          dateString: moment(`${year}-${month+1}-${date}`, "YYYY-M-D").locale('id').format('DD MMMM YYYY'),
+          date: moment(`${year}-${month+1}-${date}`, "YYYY-M-D"),
+          day: moment(`${year}-${month+1}-${date}`, "YYYY-M-D").locale('id').format('dddd'),
           info: _infoValue,
           desc: descValue,
         }
