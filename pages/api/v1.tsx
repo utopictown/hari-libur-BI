@@ -73,17 +73,17 @@ const load = async () => {
         const infoElem = await evenRowHandle.$('.ms-rteTableEvenCol-6')
         const infoValue = await evaluateInnerHTML(infoElem)
         const descValue = await evaluateInnerHTML(evenElem[1])
-        const _infoValue = infoValue.replace(/(&nbsp;)/g, '');
-        const _dateValue = dateValue.replace(/(&nbsp;)/g, ' ');
-        const splittedDate = _dateValue.split(' ');
+        const _infoValue = infoValue.replace(/(&nbsp;)|[^\x00-\x7F]|<br>/g, '');
+        const _dateValue = dateValue.replace(/(&nbsp;)|[^\x00-\x7F]|<br>/g, ' ');
+        const splittedDate = _dateValue.trim().split(' ');
         const date = parseInt(splittedDate[0].replace('​', '')); // purge weird zero width space character
         const month = inversedMonths[splittedDate[1]];
         const year = parseInt(splittedDate[2].replace('​', '')); // purge weird zero width space character
-
+        
         return {
-          dateString: moment(`${year}-${month+1}-${date}`).locale('id').format('DD MMMM YYYY'),
-          date: moment(`${year}-${month+1}-${date}`),
-          day: moment(`${year}-${month+1}-${date}`).locale('id').format('dddd'),
+          dateString: moment(`${year}-${month+1}-${date}`, "YYYY-M-D").locale('id').format('DD MMMM YYYY'),
+          date: moment(`${year}-${month+1}-${date}`, "YYYY-M-D"),
+          day: moment(`${year}-${month+1}-${date}`, "YYYY-M-D").locale('id').format('dddd'),
           info: _infoValue,
           desc: descValue,
         }
